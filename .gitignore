@@ -26,6 +26,7 @@ yarn-debug.log*
 yarn-error.log*
 
 
+
 # vercel
 .vercel
 
@@ -34,3 +35,4 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+.env.local

@@ -6,13 +6,16 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Qutbi Tutorials",
-  description: "",
-};
+
+  };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+      <link rel="icon" href="/logo.png"/>
+        <title>Qutbi Tutorials</title>
+      </head>
       <body className={inter.className}>
         <Navbar/>
         

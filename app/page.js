@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import { useState } from 'react';
 
 export default function Home() {
@@ -29,11 +30,12 @@ export default function Home() {
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Something went wrong');
       }
 
       const data = await response.json();
-      alert(data.message); // Display success message
+      alert(data.message);
     } catch (error) {
       console.error('Error submitting form:', error);
       alert('Error submitting form: ' + error.message);
