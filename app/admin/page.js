@@ -1,9 +1,9 @@
 "use client";
-import React from 'react'
+import React from 'react';
 import { useEffect, useState } from 'react';
 
-const page = () => {
-    const [enrollments, setEnrollments] = useState([]);
+const Page = () => {
+  const [enrollments, setEnrollments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -31,32 +31,34 @@ const page = () => {
   }
 
   if (error) {
-    return <p>{`Error: ${error}`}</p>;}
+    return <p>{`Error: ${error}`}</p>;
+  }
+
   return (
     <div className="container mx-auto p-4">
-    <h1 className="text-xl font-bold mb-4">Enrollments</h1>
-    <table className="min-w-full bg-white">
-      <thead>
-        <tr>
-          <th className="w-1/4 px-4 py-2">Name</th>
-          <th className="w-1/4 px-4 py-2">Email</th>
-          <th className="w-1/4 px-4 py-2">Mobile</th>
-          <th className="w-1/4 px-4 py-2">Course</th>
-        </tr>
-      </thead>
-      <tbody>
-        {enrollments.map((enrollment) => (
-          <tr key={enrollment._id}>
-            <td className="border px-4 py-2">{enrollment.name}</td>
-            <td className="border px-4 py-2">{enrollment.email}</td>
-            <td className="border px-4 py-2">{enrollment.mobile}</td>
-            <td className="border px-4 py-2">{enrollment.course}</td>
+      <h1 className="text-xl font-bold mb-4">Enrollments</h1>
+      <table className="min-w-full bg-white">
+        <thead>
+          <tr>
+            <th className="w-1/4 px-4 py-2">Name</th>
+            <th className="w-1/4 px-4 py-2">Email</th>
+            <th className="w-1/4 px-4 py-2">Mobile</th>
+            <th className="w-1/4 px-4 py-2">Course</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-  )
-}
+        </thead>
+        <tbody>
+          {enrollments.map((enrollment) => (
+            <tr key={enrollment._id}>
+              <td className="border px-4 py-2">{enrollment.name}</td>
+              <td className="border px-4 py-2">{enrollment.email}</td>
+              <td className="border px-4 py-2">{enrollment.mobile}</td>
+              <td className="border px-4 py-2">{enrollment.course}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
-export default page
+export default Page;
