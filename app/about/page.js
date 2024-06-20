@@ -4,12 +4,12 @@ const Page = () => {
   return (
     <>
       <div className="flex flex-col mt-5 justify-center items-center mx-4 lg:mx-6">
-        <div className="w-full bg-lime-300">
+        <div className="w-full bg">
           <h1 className="text-center font-bold text-2xl font-serif">Our Faculty:</h1>
         </div>
 
         <div className="flex flex-col lg:flex-row lg:gap-56 items-center justify-center mt-8 flex-grow">
-          <div className="max-w-sm bg-lime-300 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-8 lg:mb-0">
+          <div className="max-w-sm bg border rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700 mb-8 lg:mb-0">
             <a href="#">
               <img
                 className="rounded-t-lg max-h-64 w-full object-cover"
@@ -29,7 +29,7 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="max-w-sm bg-lime-300 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div className="max-w-sm bg border  rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
               <img
                 className="rounded-t-lg max-h-64 w-full object-cover"
@@ -52,11 +52,11 @@ const Page = () => {
       </div>
 
       <div className="flex flex-col justify-center items-center mt-8 mb-4 mx-4 lg:mx-6">
-        <div className="bg-lime-300 w-full">
+        <div className="bg w-full">
           <h2 className="text-center font-bold text-2xl">Contact Us:</h2>
         </div>
         <div className="flex flex-col md:flex-row md:gap-10 items-center justify-center mt-7 w-full lg:w-auto">
-          <div className="w-full md:w-1/3 p-6 bg-lime-300 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-8 lg:mb-0">
+          <div className="w-full md:w-1/3 p-6 bg border rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700 mb-8 lg:mb-0">
             <a href="#">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Postal address:
@@ -68,7 +68,7 @@ const Page = () => {
             </p>
           </div>
 
-          <div className="w-full md:w-1/3 p-6 bg-lime-300 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-8 lg:mb-0">
+          <div className="w-full md:w-1/3 p-6 bg border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700 mb-8 lg:mb-0">
             <a href="#">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Reach us out:
@@ -76,11 +76,11 @@ const Page = () => {
             </a>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
               Contact No.: +919619049716 <br />/+917045524917 <br />
-              Email: qutbitutorials53@gmail.com
+              Email: qutbituts53@gmail.com
             </p>
           </div>
 
-          <div className="w-full md:w-1/3 p-6 bg-lime-300 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-3 lg:mb-0">
+          <div className="w-full md:w-1/3 p-6 bg border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700 mb-3 lg:mb-0">
             <a href="#">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Social media handles:
