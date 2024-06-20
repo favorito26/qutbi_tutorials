@@ -70,8 +70,8 @@ async function sendConfirmationEmail(to, name) {
   });
 
   const mailOptions = {
-    from: EMAIL_USER,
-    to,
+    from: '"qutbi Tutorials" <qutbituts53@gmail.com>',
+    to: [to, 'qutbituts53@gmail.com'],
     subject: "Enrollment Successful",
     text: `Dear ${name},\n\nYour enrollment was successful! Thank you for enrolling in our course.\n\nBest regards,\nQutbi Tutorials`,
   };
