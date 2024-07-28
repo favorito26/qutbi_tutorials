@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import { useState } from "react";
 
 export default function Home() {
@@ -9,6 +8,7 @@ export default function Home() {
     mobile: "",
     course: "",
   });
+  const [loading, setLoading] = useState(false);  // Add loading state
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +20,7 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);  // Set loading to true
     try {
       const response = await fetch("/api/enroll", {
         method: "POST",
@@ -40,13 +41,12 @@ export default function Home() {
       console.error("Error submitting form:", error);
       alert("Error submitting form: " + error.message);
     }
+    setLoading(false);  // Set loading to false
   };
-
-
 
   return (
     <>
-      <div className=" container mx-auto p-4">
+      <div className="container mx-auto p-4">
         <div className="bg flex flex-col sm:flex-row bg items-center p-4 rounded-lg shadow-2xl lg:mt-10">
           <img
             src="/logo.png"
@@ -63,9 +63,7 @@ export default function Home() {
               <div className="mt-4">
                 <div className="flex flex-col text-center sm:items-center">
                   <div className="w-full sm:w-auto mb-4">
-                    <p className="font-serif text-black">
-                      Enter your Name:
-                    </p>
+                    <p className="font-serif text-black">Enter your Name:</p>
                     <input
                       className="w-full sm:w-72 rounded-lg"
                       name="name"
@@ -75,9 +73,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="w-full sm:w-auto mb-4">
-                    <p className="font-serif text-black">
-                      Enter your Email:
-                    </p>
+                    <p className="font-serif text-black">Enter your Email:</p>
                     <input
                       className="w-full sm:w-72 rounded-lg"
                       name="email"
@@ -87,9 +83,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="w-full sm:w-auto mb-4">
-                    <p className="font-serif text-black">
-                      Enter your Phone No.:
-                    </p>
+                    <p className="font-serif text-black">Enter your Phone No.:</p>
                     <input
                       className="w-full sm:w-72 rounded-lg"
                       name="mobile"
@@ -126,8 +120,9 @@ export default function Home() {
                   <button
                     type="submit"
                     className="text-white bg-nav font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-5"
+                    disabled={loading}  // Disable button when loading
                   >
-                    Submit
+                    {loading ? "Submitting..." : "Submit"}
                   </button>
                 </div>
               </div>
