@@ -26,6 +26,28 @@ const Page = () => {
     fetchEnrollments();
   }, []);
 
+  const handleDelete = async (id) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/enroll`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id }),
+      });
+      if (!response.ok) {
+        throw new Error('Error deleting enrollment');
+      }
+      // Remove the deleted enrollment from the state
+      setEnrollments(enrollments.filter(enrollment => enrollment._id !== id));
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -44,6 +66,7 @@ const Page = () => {
             <th className="w-1/4 px-4 py-2">Email</th>
             <th className="w-1/4 px-4 py-2">Mobile</th>
             <th className="w-1/4 px-4 py-2">Course</th>
+            <th className="w-1/4 px-4 py-2">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -53,6 +76,9 @@ const Page = () => {
               <td className="border px-4 py-2">{enrollment.email}</td>
               <td className="border px-4 py-2">{enrollment.mobile}</td>
               <td className="border px-4 py-2">{enrollment.course}</td>
+              <td className="border px-4 py-2">
+                <button onClick={() => handleDelete(enrollment._id)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>

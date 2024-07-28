@@ -125,3 +125,29 @@ export async function GET(req) {
     );
   }
 }
+
+export async function DELETE(req) {
+  await connectToDatabase();
+  try {
+    const { id } = await req.json();
+    const deletedEnrollment = await Enrollment.findByIdAndDelete(id);
+    if (!deletedEnrollment) {
+      return NextResponse.json(
+        { message: "Enrollment not found" },
+        { status: 404 }
+      );
+    }
+    return NextResponse.json(
+      { message: "Enrollment deleted successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error deleting enrollment:", error);
+    return NextResponse.json(
+      { message: "Error deleting enrollment", error: error.message },
+      { status: 500 }
+    );
+  }
+}
+
+
