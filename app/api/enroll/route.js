@@ -24,12 +24,7 @@ async function connectToDatabase() {
   }
 
   if (!cached.promise) {
-    const opts = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    };
-
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => {
       return mongoose;
     });
   }
@@ -70,7 +65,7 @@ async function sendConfirmationEmail(to, name) {
   });
 
   const mailOptions = {
-    from: '"qutbi Tutorials" <qutbituts53@gmail.com>',
+    from: `"Qutbi Tutorials" <${EMAIL_USER}>`,
     to: [to, 'qutbituts53@gmail.com'],
     subject: "Enrollment Successful",
     text: `Dear ${name},\n\nYour enrollment was successful! Thank you for enrolling in our course.\n\nBest regards,\nQutbi Tutorials`,
@@ -149,5 +144,3 @@ export async function DELETE(req) {
     );
   }
 }
-
-
