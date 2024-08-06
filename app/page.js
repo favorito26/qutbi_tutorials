@@ -160,7 +160,7 @@ const Home = () => {
           {/* Form and Text Section */}
           <div className="w-full sm:w-1/2 mt-4 sm:mt-0 sm:ml-4 flex justify-center">
             <div className="max-w-md w-full">
-              <p className="text-black font-serif text-center sm:text-left sm:text-lg lg:text-xl mb-4">
+              <p className="text font-serif text-center sm:text-left sm:text-lg lg:text-xl mb-4">
                 Welcome to Qutbi Tutorials, where academic excellence meets
                 personalized learning in the realm of commerce education. Nestled
                 at the intersection of expertise and innovation.
@@ -168,7 +168,7 @@ const Home = () => {
               <form onSubmit={handleSubmit}>
                 <div className="flex flex-col items-center">
                   <div className="w-full mb-4">
-                    <p className="font-serif text-black">Enter your Name:</p>
+                    <p className="font-serif text">Enter your Name:</p>
                     <input
                       className="w-full rounded-lg"
                       name="name"
@@ -178,7 +178,7 @@ const Home = () => {
                     />
                   </div>
                   <div className="w-full mb-4">
-                    <p className="font-serif text-black">Enter your Email:</p>
+                    <p className="font-serif text">Enter your Email:</p>
                     <input
                       className="w-full rounded-lg"
                       name="email"
@@ -188,7 +188,7 @@ const Home = () => {
                     />
                   </div>
                   <div className="w-full mb-4">
-                    <p className="font-serif text-black">Enter your Phone No.:</p>
+                    <p className="font-serif text">Enter your Phone No.:</p>
                     <input
                       className="w-full rounded-lg"
                       name="mobile"
@@ -198,7 +198,7 @@ const Home = () => {
                     />
                   </div>
                   <div className="w-full mb-4">
-                    <p className="font-serif text-black">
+                    <p className="font-serif text">
                       Enter the course you wish to join for:
                     </p>
                     <select
