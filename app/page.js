@@ -12,7 +12,7 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    "qutbi_tutorials.jpg",
+    "qutbi_tutorials.png",
     // Add more slide images as needed
   ];
 
