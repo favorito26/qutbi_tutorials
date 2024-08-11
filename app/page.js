@@ -158,18 +158,18 @@ const Home = () => {
           </div>
         </div>
       </div>
-    <div class="mt-5 gap-4 p-4 mb-8 border rounded-lg bg shadow-lg">
-    <div class="relative flex gap-4">
-        <img src="https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/256/User-blue-icon.png" class="relative rounded-lg -top-7 -mb-4 bg-white border h-16 w-16" alt="" loading="lazy"/>
-        <div class="flex flex-col w-full">
-            <div class="flex flex-row justify-between">
-                <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">Lulua Jivakhan</p>
-                <a class="text-gray-500 text-xl" href="#"><i class="fa-solid fa-trash"></i></a>
+    <div className="mt-5 gap-4 p-4 mb-8 border rounded-lg bg shadow-lg">
+    <div className="relative flex gap-4">
+        <img src="https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/256/User-blue-icon.png" className="relative rounded-lg -top-7 -mb-4 bg-white border h-16 w-16" alt="" loading="lazy"/>
+        <div className="flex flex-col w-full">
+            <div className="flex flex-row justify-between">
+                <p className="relative text-xl whitespace-nowrap truncate overflow-hidden">Lulua Jivakhan</p>
+                <a className="text-gray-500 text-xl" href="#"><i className="fa-solid fa-trash"></i></a>
             </div>
           
         </div>
     </div>
-    <p class="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quisquam vero adipisci beatae voluptas dolor ame.</p>
+    <p className="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quisquam vero adipisci beatae voluptas dolor ame.</p>
 </div>
     </div>
   );
