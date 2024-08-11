@@ -163,13 +163,13 @@ const Home = () => {
         <img src="https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/256/User-blue-icon.png" className="relative rounded-lg -top-7 -mb-4 bg-white border h-16 w-16" alt="" loading="lazy"/>
         <div className="flex flex-col w-full">
             <div className="flex flex-row justify-between">
-                <p className="relative text-xl whitespace-nowrap truncate overflow-hidden">Lulua Jivakhan</p>
+                <p className="relative text-xl whitespace-nowrap truncate overflow-hidden">Lulua Jiwakhan</p>
                 <a className="text-gray-500 text-xl" href="#"><i className="fa-solid fa-trash"></i></a>
             </div>
           
         </div>
     </div>
-    <p className="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quisquam vero adipisci beatae voluptas dolor ame.</p>
+    <p className="-mt-1 text-blue-950 text-sm">Qutbi Tutorials has helped us to clear our examinations smoothly without any hassel. Your enthusiasm towards us was inspiring and the way you guided us through every step of our journey was amazing. Also they make sure to improve students performance by creating study plans, mocks, practice and doubt-solving sessions. Highly recommended!!</p>
 </div>
     </div>
   );
