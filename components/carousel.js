@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-const carousel = () => {
+const Carousel = () => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -44,4 +44,4 @@ const carousel = () => {
   )
 }
 
-export default carousel
+export default Carousel
