@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import Carousel from "@/components/Carousel";
+import Carousel from "@/components/carousel";
 
 const Home = () => {
   const [formData, setFormData] = useState({
