@@ -169,7 +169,7 @@ const Home = () => {
           
         </div>
     </div>
-    <p className="-mt-1 text-blue-950 text-sm">Qutbi Tutorials has helped us to clear our examinations smoothly without any hassel. Your enthusiasm towards us was inspiring and the way you guided us through every step of our journey was amazing. Also they make sure to improve students performance by creating study plans, mocks, practice and doubt-solving sessions. Highly recommended!!</p>
+    <p className="-mt-1 text-blue-950 text-xs md:text-lg">Qutbi Tutorials has helped us to clear our examinations smoothly without any hassel. Your enthusiasm towards us was inspiring and the way you guided us through every step of our journey was amazing. Also they make sure to improve students performance by creating study plans, mocks, practice and doubt-solving sessions. Highly recommended!!</p>
 </div>
     </div>
   );
