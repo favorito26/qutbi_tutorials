@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Carousel from "@/components/carousel";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -9,21 +10,7 @@ const Home = () => {
     course: "",
   });
   const [loading, setLoading] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const slides = [
-    "qutbi_tutorials.png",
-    // Add more slide images as needed
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 7000); // Change slide every 7 seconds
-
-    return () => clearInterval(interval);
-  }, [slides.length]);
-
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -84,142 +71,55 @@ const Home = () => {
     <div className="container mx-auto p-4">
       <div className="bg flex flex-col sm:flex-row items-center p-6 pb-9 rounded-lg shadow-2xl lg:mt-10">
         {/* Carousel Section */}
-        <div className="w-full sm:w-1/2 relative overflow-hidden h-56 md:h-96">
-          <div
-            className="flex transition-transform duration-700 ease-in-out"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {slides.map((slide, index) => (
-              <div key={index} className="flex-shrink-0 w-full h-full">
-                <img
-                  src={slide}
-                  className="w-full h-full object-cover"
-                  alt={`Slide ${index + 1}`}
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                type="button"
-                className={`w-3 h-3 rounded-full ${
-                  index === currentSlide ? "bg-white" : "bg-gray-400"
-                }`}
-                aria-current={index === currentSlide}
-                aria-label={`Slide ${index + 1}`}
-                data-carousel-slide-to={index}
-                onClick={() => setCurrentSlide(index)}
-              ></button>
-            ))}
-          </div>
-
-          <button
-            type="button"
-            className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-            data-carousel-prev
-            onClick={() =>
-              setCurrentSlide((prevSlide) =>
-                prevSlide === 0 ? slides.length - 1 : prevSlide - 1
-              )
-            }
-          >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg
-                className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 1 1 5l4 4"
-                />
-              </svg>
-              <span className="sr-only">Previous</span>
-            </span>
-          </button>
-          <button
-            type="button"
-            className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-            data-carousel-next
-            onClick={() =>
-              setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length)
-            }
-          >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg
-                className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m1 9 4-4-4-4"
-                />
-              </svg>
-              <span className="sr-only">Next</span>
-            </span>
-          </button>
-        </div>
-
+      <Carousel/>
         {/* Form and Text Section */}
         <div className="w-full sm:w-1/2 mt-4 sm:mt-0 sm:ml-4 flex justify-center">
           <div className="max-w-md w-full">
-            <p className="text font-serif text-center sm:text-left sm:text-lg lg:text-xl mb-4">
+            <p className="text font-serif font-semibold text-center sm:text-left sm:text-lg lg:text-xl mb-4">
               Welcome to Qutbi Tutorials, where academic excellence meets
               personalized learning in the realm of commerce education. Nestled
               at the intersection of expertise and innovation.
             </p>
+            <div className="flex justify-center font-bold bg-nav text-white mb-4">
+            <h4 className="">Enroll Now!!</h4></div>
             <form onSubmit={handleSubmit}>
-              <div className="flex flex-col items-center">
-                <div className="w-full mb-4">
+              <div className="flex flex-col items-center w-full">
+                <div className="w-full mb-3">
                   <p className="font-serif text">Enter your Name:</p>
                   <input
-                    className="w-full rounded-lg"
+                    className="w-full rounded-md p-1"
                     name="name"
                     value={formData.name}
-                    onChange={handleChange}
+                    onChange={handleChange} 
                     placeholder="Enter your name"
                   />
                 </div>
-                <div className="w-full mb-4">
+                <div className="w-full mb-3">
                   <p className="font-serif text">Enter your Email:</p>
                   <input
-                    className="w-full rounded-lg"
+                    className="w-full rounded-md p-1"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Enter your email"
                   />
                 </div>
-                <div className="w-full mb-4">
+                <div className="w-full mb-3">
                   <p className="font-serif text">Enter your Phone No.:</p>
                   <input
-                    className="w-full rounded-lg"
+                    className="w-full rounded-md p-1"
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleChange}
                     placeholder="Enter your Mobile No."
                   />
                 </div>
-                <div className="w-full mb-4">
+                <div className="w-full mb-3">
                   <p className="font-serif text">
                     Enter the course you wish to join for:
                   </p>
                   <select
-                    className="w-full rounded-lg"
+                    className="w-full rounded-md p-1"
                     name="course"
                     value={formData.course}
                     onChange={handleChange}
@@ -258,6 +158,19 @@ const Home = () => {
           </div>
         </div>
       </div>
+    <div class="mt-5 gap-4 p-4 mb-8 border rounded-lg bg shadow-lg">
+    <div class="relative flex gap-4">
+        <img src="https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/256/User-blue-icon.png" class="relative rounded-lg -top-7 -mb-4 bg-white border h-16 w-16" alt="" loading="lazy"/>
+        <div class="flex flex-col w-full">
+            <div class="flex flex-row justify-between">
+                <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">Lulua Jivakhan</p>
+                <a class="text-gray-500 text-xl" href="#"><i class="fa-solid fa-trash"></i></a>
+            </div>
+          
+        </div>
+    </div>
+    <p class="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quisquam vero adipisci beatae voluptas dolor ame.</p>
+</div>
     </div>
   );
 };
