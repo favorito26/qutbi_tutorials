@@ -161,6 +161,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div className='flex justify-center bg-nav mt-4 shadow-lg rounded-lg'>
+        <p className='text-white font-bold text-lg'>Student Testimonials</p>
+      </div>
       <ReviewsList />
       <Review />
     </div>
