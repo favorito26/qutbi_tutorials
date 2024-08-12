@@ -12,7 +12,7 @@ const Home = () => {
     course: "",
   });
   const [loading, setLoading] = useState(false);
- 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -73,7 +73,7 @@ const Home = () => {
     <div className="container mx-auto p-4">
       <div className="bg flex flex-col sm:flex-row items-center p-6 pb-9 rounded-lg shadow-2xl lg:mt-10">
         {/* Carousel Section */}
-      <Carousel/>
+        <Carousel />
         {/* Form and Text Section */}
         <div className="w-full sm:w-1/2 mt-4 sm:mt-0 sm:ml-4 flex justify-center">
           <div className="max-w-md w-full">
@@ -83,7 +83,8 @@ const Home = () => {
               at the intersection of expertise and innovation.
             </p>
             <div className="flex justify-center font-bold bg-nav text-white mb-4">
-            <h4 className="">Enroll Now!!</h4></div>
+              <h4 className="">Enroll Now!!</h4>
+            </div>
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col items-center w-full">
                 <div className="w-full mb-3">
@@ -92,7 +93,7 @@ const Home = () => {
                     className="w-full rounded-md p-1"
                     name="name"
                     value={formData.name}
-                    onChange={handleChange} 
+                    onChange={handleChange}
                     placeholder="Enter your name"
                   />
                 </div>
@@ -160,10 +161,10 @@ const Home = () => {
           </div>
         </div>
       </div>
-<ReviewsList/>
-<Review/>
+      <ReviewsList />
+      <Review />
     </div>
-  );  
+  );
 };
 
 export default Home;
