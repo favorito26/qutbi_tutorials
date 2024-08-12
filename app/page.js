@@ -1,6 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Carousel from "@/components/carousel";
+import Review from "@/components/Review";
+import ReviewsList from "@/components/Reviewslist";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -158,34 +160,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-    <div className="mt-5 gap-4 p-4 mb-8 border rounded-lg bg shadow-lg">
-    <div className="relative flex gap-4">
-        <img src="https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/256/User-blue-icon.png" className="relative rounded-lg -top-7 -mb-4 bg-white border h-16 w-16" alt="" loading="lazy"/>
-        <div className="flex flex-col w-full">
-            <div className="flex flex-row justify-between">
-                <p className="relative text-xl whitespace-nowrap truncate overflow-hidden">Lulua Jiwakhan</p>
-                <a className="text-gray-500 text-xl" href="#"><i className="fa-solid fa-trash"></i></a>
-            </div>
-          
-        </div>
-    </div>
-    <p className="-mt-1 text-blue-950 text-xs md:text-lg">Qutbi Tutorials has helped us to clear our examinations smoothly without any hassel. Your enthusiasm towards us was inspiring and the way you guided us through every step of our journey was amazing. Also they make sure to improve students performance by creating study plans, mocks, practice and doubt-solving sessions. Highly recommended!!</p>
-</div>
-<div className="mt-5 gap-4 p-4 mb-8 border rounded-lg bg shadow-lg">
-    <div className="relative flex gap-4">
-        <img src="https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/256/User-blue-icon.png" className="relative rounded-lg -top-7 -mb-4 bg-white border h-16 w-16" alt="" loading="lazy"/>
-        <div className="flex flex-col w-full">
-            <div className="flex flex-row justify-between">
-                <p className="relative text-xl whitespace-nowrap truncate overflow-hidden">Behlul Chhatriwala</p>
-                <a className="text-gray-500 text-xl" href="#"><i className="fa-solid fa-trash"></i></a>
-            </div>
-          
-        </div>
-    </div>
-    <p className="-mt-1 text-blue-950 text-xs md:text-lg">Hi sir! <br />
-I just wanted to give you a feedback of qutbi tutorials.
-I was a student who had no idea about commerce at all and Qutub sir helped me to understand about the stream . His teaching method is also unique and it would be fun learning new things with him because of this I was able to score good in my 12th.</p>
-</div>
+<ReviewsList/>
+<Review/>
     </div>
   );  
 };
