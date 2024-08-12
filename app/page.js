@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Carousel from "@/components/carousel";
 import Review from "@/components/Review";
-import ReviewsList from "@/components/Reviewslist";
+import ReviewsList from "@/components/ReviewsList";
 
 const Home = () => {
   const [formData, setFormData] = useState({
