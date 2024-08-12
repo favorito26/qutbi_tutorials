@@ -45,6 +45,10 @@ const ReviewSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  isApproved: {
+    type: Boolean,
+    default: false,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -53,15 +57,12 @@ const ReviewSchema = new mongoose.Schema({
 
 const Review = mongoose.models.Review || mongoose.model("Review", ReviewSchema);
 
-// Handle POST and GET requests
-
 export async function POST(request) {
   await connectToDatabase();
 
   try {
     const { name, rating, reviewText } = await request.json();
 
-    // Validate the input
     if (!name || !rating || !reviewText) {
       return NextResponse.json(
         { error: "Name, rating, and review text are required" },
@@ -69,7 +70,6 @@ export async function POST(request) {
       );
     }
 
-    // Create a new review
     const review = new Review({ name, rating, reviewText });
     await review.save();
 
@@ -85,6 +85,23 @@ export async function GET() {
   try {
     const reviews = await Review.find({});
     return NextResponse.json(reviews, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+export async function PATCH(request) {
+  await connectToDatabase();
+
+  try {
+    const { id, isApproved } = await request.json();
+
+    const review = await Review.findByIdAndUpdate(id, { isApproved }, { new: true });
+    if (!review) {
+      return NextResponse.json({ error: "Review not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: "Approval status updated" }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

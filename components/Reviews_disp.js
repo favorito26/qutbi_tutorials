@@ -18,7 +18,6 @@ const Reviews_disp = ({ name, rating, reviewText }) => {
 
   return (
     <div className="mt-5 gap-4 p-4 mb-8 border rounded-lg bg shadow-lg">
-      
       <div className="relative flex gap-4">
         <img
           src="https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/256/User-blue-icon.png"
@@ -31,9 +30,7 @@ const Reviews_disp = ({ name, rating, reviewText }) => {
             <p className="relative text-xl whitespace-nowrap truncate overflow-hidden">
               {name}
             </p>
-            <a className="text-gray-500 text-xl" href="#">
-              <i className="fa-solid fa-trash"></i>
-            </a>
+           
           </div>
           <div className="flex">{stars}</div>
         </div>

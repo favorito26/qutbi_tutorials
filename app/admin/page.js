@@ -4,15 +4,15 @@ import React, { useState, useEffect } from 'react';
 
 const Page = () => {
   const [enrollments, setEnrollments] = useState([]);
-  const [reviews, setReviews] = useState([]); // State for reviews
+  const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [inputPassword, setInputPassword] = useState('');
-  const [showTable, setShowTable] = useState('enrollments'); // State to manage which table to show
+  const [showTable, setShowTable] = useState('enrollments');
 
-  const correctPassword = 'qasim1234'; // Replace with your actual admin password
+  const correctPassword = 'qasim1234';
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -45,7 +45,7 @@ const Page = () => {
       };
 
       fetchEnrollments();
-      fetchReviews(); // Fetch both enrollments and reviews
+      fetchReviews();
     }
   }, [isAuthenticated]);
 
@@ -84,6 +84,31 @@ const Page = () => {
         throw new Error('Error deleting review');
       }
       setReviews(reviews.filter(review => review._id !== id));
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleApprovalToggle = async (id, isApproved) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/review`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id, isApproved }),
+      });
+      if (!response.ok) {
+        throw new Error('Error updating approval status');
+      }
+      setReviews(
+        reviews.map(review =>
+          review._id === id ? { ...review, isApproved } : review
+        )
+      );
     } catch (error) {
       setError(error.message);
     } finally {
@@ -184,6 +209,7 @@ const Page = () => {
                 <th className="w-1/4 px-4 py-2">Name</th>
                 <th className="w-1/4 px-4 py-2">Rating</th>
                 <th className="w-1/4 px-4 py-2">Review</th>
+                <th className="w-1/4 px-4 py-2">Approve</th>
                 <th className="w-1/4 px-4 py-2">Delete</th>
               </tr>
             </thead>
@@ -193,6 +219,13 @@ const Page = () => {
                   <td className="border px-4 py-2">{review.name}</td>
                   <td className="border px-4 py-2">{review.rating}</td>
                   <td className="border px-4 py-2">{review.reviewText}</td>
+                  <td className="border px-4 py-2">
+                    <input
+                      type="checkbox"
+                      checked={review.isApproved}
+                      onChange={() => handleApprovalToggle(review._id, !review.isApproved)}
+                    />
+                  </td>
                   <td className="border px-4 py-2">
                     <button onClick={() => handleDeleteReview(review._id)}>Delete</button>
                   </td>

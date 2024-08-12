@@ -8,9 +8,12 @@ function ReviewsList() {
     // Fetch reviews from the API
     const fetchReviews = async () => {
       try {
-        const response = await fetch('/api/review'); // Adjust the endpoint as needed
+        const response = await fetch('/api/review');
         const data = await response.json();
-        setReviews(data);
+
+        // Filter to only include approved reviews
+        const approvedReviews = data.filter(review => review.isApproved);
+        setReviews(approvedReviews);
       } catch (error) {
         console.error('Error fetching reviews:', error);
       }
