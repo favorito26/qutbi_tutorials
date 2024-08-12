@@ -3,6 +3,7 @@ import Reviews_disp from './Reviews_disp';
 
 function ReviewsList() {
   const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true); // Add a loading state
 
   useEffect(() => {
     // Fetch reviews from the API
@@ -16,11 +17,21 @@ function ReviewsList() {
         setReviews(approvedReviews);
       } catch (error) {
         console.error('Error fetching reviews:', error);
+      } finally {
+        setLoading(false); // Set loading to false after data is fetched
       }
     };
 
     fetchReviews();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center">
+        <div className="loader"></div> {/* Simple CSS loader */}
+      </div>
+    );
+  }
 
   return (
     <div>
