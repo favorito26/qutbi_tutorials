@@ -3,7 +3,7 @@ import React from 'react';
 
 const Navbar = () => {
     const handleCallClick = () => {
-    const phone = +917045524917;
+    const phone = "+917045524917";
     window.location.href = `tel:${phone}`;
   };
   return (
