@@ -1,11 +1,18 @@
-"use client"
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 
 const Navbar = () => {
-    const handleCallClick = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleCallClick = () => {
     const phone = "+917045524917";
     window.location.href = `tel:${phone}`;
   };
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav className='bg-nav'>
       <div className="mycontainer flex items-center justify-between px-4 py-10 h-14">
@@ -13,21 +20,33 @@ const Navbar = () => {
           <img src='/logo.png' alt="Logo" className="h-16 w-16 bg rounded-full mr-4" />
           <div className="logo font-bold text-white lg:text-xl sm:text-base">Qutbi Tutorials</div>
         </div>
-        <ul>
-          <li className='flex gap-4'>
-          <button 
-              className='text-center lg:me-2 sm:me-0 mb-2 mt-2 sm:hidden' 
-              onClick={handleCallClick}
-              style={{background: 'none', border: 'none', padding: 0}} // Remove default button styles
-            >
-              <img src="call.gif" alt="Call Us" className='w-24 h-10'/>
-            </button>
-            <a className='text-black bg hover:bg-gradient-to-br focus:ring-4 focus:outline-none 
-                         font-medium rounded-lg text-sm px-5 py-2.5 text-center lg:me-2 sm:me-0 mb-2 mt-2' href="/">Home</a>
-            <a className='text-black bg
-                         font-medium rounded-lg text-sm px-5 py-2.5 text-center lg:me-2 sm:me-0 mb-2 mt-2' href="/about">About</a>
-          </li> 
-        </ul>
+
+        {/* Call Us button */}
+        <button 
+          className='flex flex-row text-center lg:me-2 sm:me-0 mb-2 mt-2 bg rounded sm:hidden font-bold' 
+          onClick={handleCallClick}
+        >
+         <p className='mt-1 ml-1'> Call Us
+         </p>          <img src="call.gif" alt="Call Us" className='w-15 h-8'/>
+        </button>
+
+   
+        <button 
+          className="text-white focus:outline-none sm:block lg:hidden" 
+          onClick={toggleMenu}
+        >
+          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+ 
+      <div className={`${isOpen ? 'block' : 'hidden'} lg:flex  lg:items-center lg:gap-4 p-2`}>
+        <a className='block text-black bg hover:bg-gradient-to-br focus:ring-4 focus:outline-none 
+                       font-medium rounded-lg text-sm px-2 py-2 lg:px-5 lg:py-2.5 text-center justify-center lg:me-2 sm:me-0 mb-2 mt-2' href="/">Home</a>
+        <a className='block text-black bg
+                       font-medium rounded-lg text-sm px-2 py-2 lg:px-5 lg:py-2.5 text-center lg:me-2 sm:me-0 mb-2 mt-2' href="/about">About</a>
       </div>
     </nav>
   );
