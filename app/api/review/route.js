@@ -57,6 +57,7 @@ const ReviewSchema = new mongoose.Schema({
 
 const Review = mongoose.models.Review || mongoose.model("Review", ReviewSchema);
 
+// POST: Create a new review
 export async function POST(request) {
   await connectToDatabase();
 
@@ -79,6 +80,7 @@ export async function POST(request) {
   }
 }
 
+// GET: Retrieve all reviews
 export async function GET() {
   await connectToDatabase();
 
@@ -90,6 +92,7 @@ export async function GET() {
   }
 }
 
+// PATCH: Update approval status of a review
 export async function PATCH(request) {
   await connectToDatabase();
 
@@ -102,6 +105,27 @@ export async function PATCH(request) {
     }
 
     return NextResponse.json({ message: "Approval status updated" }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+// DELETE: Remove a review by ID
+export async function DELETE(request) {
+  await connectToDatabase();
+
+  try {
+    const { id } = await request.json();  // Extracting the ID from the request body
+    if (!id) {
+      return NextResponse.json({ error: "Review ID is required" }, { status: 400 });
+    }
+
+    const deletedReview = await Review.findByIdAndDelete(id);  // Delete the review by ID
+    if (!deletedReview) {
+      return NextResponse.json({ error: "Review not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: "Review deleted successfully" }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

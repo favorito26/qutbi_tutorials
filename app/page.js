@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Carousel from "@/components/carousel";
 import Review from "@/components/Review";
 import ReviewsList from "@/components/ReviewsList";
@@ -61,6 +61,14 @@ const Home = () => {
       } catch (emailError) {
         console.error("Error sending confirmation email:", emailError);
       }
+
+      // Reset form data
+      setFormData({
+        name: "",
+        email: "",
+        mobile: "",
+        course: "",
+      });
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Error submitting form: " + error.message);
@@ -69,14 +77,35 @@ const Home = () => {
     }
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in-visible");
+          } else {
+            entry.target.classList.remove("fade-in-visible");
+          }
+        });
+      },
+      { threshold: 0.1 } // Trigger when 10% of the element is in view
+    );
+
+    const fadeInElements = document.querySelectorAll(".fade-in");
+    fadeInElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      fadeInElements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   return (
     <div className="container mx-auto p-4">
-      <div className="bg flex flex-col sm:flex-row items-center p-6 pb-9 rounded-lg shadow-2xl lg:mt-10">
-        {/* Carousel Section */}
+      <div className="fade-in bg flex flex-col items-center p-6 pb-9 rounded-lg shadow-2xl lg:mt-10">
         <Carousel />
-        {/* Form and Text Section */}
+
         <div className="w-full sm:w-1/2 mt-4 sm:mt-0 sm:ml-4 flex justify-center">
-          <div className="max-w-md w-full">
+          <div className="max-w-md w-full fade-in">
             <p className="text font-serif font-semibold text-center sm:text-left sm:text-lg lg:text-xl mb-4">
               Welcome to Qutbi Tutorials, where academic excellence meets
               personalized learning in the realm of commerce education. Nestled
@@ -161,11 +190,15 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className='flex justify-center bg-nav mt-4 shadow-lg rounded-lg'>
-        <p className='text-white font-bold text-lg'>Student Testimonials</p>
+      <div className="fade-in flex justify-center bg-nav mt-4 shadow-lg rounded-lg">
+        <p className="text-white font-bold text-lg">Student Testimonials</p>
       </div>
-      <ReviewsList />
-      <Review />
+      <div className="fade-in">
+        <ReviewsList />
+        </div>
+        <div className="fade-in">
+        <Review />
+    </div>
     </div>
   );
 };
